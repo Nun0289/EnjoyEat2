@@ -1,0 +1,12 @@
+{
+  "name": "enjoyeat",
+  "displayName": "enjoyeat",
+  "expo": {
+    "name": "enjoyeat",
+    "slug": "enjoyeat",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
