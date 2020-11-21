@@ -10,6 +10,7 @@ import Favorite from "../screen/Favorite";
 import Nearme from "../screen/Nearme";
 import Friends from "../screen/Friends";
 import Chat from "../screen/Chat";
+import Detail from "../screen/Detail";
 import { useFonts, Prompt_300Light } from "@expo-google-fonts/prompt";
 import { AppLoading } from "expo";
 
@@ -18,6 +19,7 @@ const FavoriteStack = createStackNavigator();
 const NearmeStack = createStackNavigator();
 const FriendsStack = createStackNavigator();
 const ChatStack = createStackNavigator();
+const DetailStack = createStackNavigator();
 const SearchIcon = ({ navigate, from }) => {
   return (
     <TouchableOpacity
@@ -27,7 +29,7 @@ const SearchIcon = ({ navigate, from }) => {
     >
       <FontAwesome5
         name="search"
-        size={40}
+        size={30}
         style={{ marginRight: 20, color: "#FFF" }}
       />
     </TouchableOpacity>
@@ -63,6 +65,23 @@ const HomeStackScreen = ({ navigation }) => {
       <HomeStack.Screen
         name="Home"
         component={Home}
+        options={{
+          animationEnabled: false,
+          headerBackTitleVisible: false,
+          headerRight: () => (
+            <SearchIcon navigate={navigation.navigate} from={"SearchUser"} />
+          ),
+          animationEnabled: false,
+          headerTitleStyle: { fontFamily: "Prompt_300Light" },
+          title: "",
+          headerStyle: {
+            backgroundColor: "#FDD009",
+          },
+        }}
+      />
+      <HomeStack.Screen
+        name="Detail"
+        component={Detail}
         options={{
           animationEnabled: false,
           headerBackTitleVisible: false,

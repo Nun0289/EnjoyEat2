@@ -10,7 +10,7 @@ const homeStyle = StyleSheet.create({
     alignItems: "center",
   },
   centermenubar: {
-    width: "80%",
+    width: "100%",
     height: "100%",
     flexDirection: "row",
   },
@@ -19,17 +19,8 @@ const homeStyle = StyleSheet.create({
     height: 80,
     backgroundColor: "#FFFFFF",
     borderRadius: 10,
-    shadowColor: "#000",
-    borderWidth: 0.25,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
+    borderColor: "#000",
+    borderWidth: 1,
   },
   centerbutton: {
     flex: 1,
