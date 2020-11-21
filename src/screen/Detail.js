@@ -160,7 +160,6 @@ const Detail = ({ route, navigation }) => {
               <View
                 style={{
                   flex: 2,
-                  backgroundColor: "blue",
                   flexDirection: "column",
                 }}
               >
@@ -170,8 +169,34 @@ const Detail = ({ route, navigation }) => {
                     flexDirection: "row",
                   }}
                 >
-                  <View style={{ flex: 2, backgroundColor: "red" }}></View>
-                  <View style={{ flex: 1, backgroundColor: "yellow" }}></View>
+                  <View
+                    style={{
+                      flex: 2,
+                      backgroundColor: "red",
+                      justifyContent: "center",
+                      paddingLeft: 10,
+                    }}
+                  >
+                    <Text style={{ fontSize: 15 }}>{item.username}</Text>
+                  </View>
+                  <View
+                    style={{
+                      flex: 1,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <View
+                      style={{
+                        flexDirection: "row",
+                      }}
+                    >
+                      <Text style={{ fontSize: 18, paddingRight: 5 }}>
+                        {item.userrate}
+                      </Text>
+                      <FontAwesome name="star" size={25} color="yellow" />
+                    </View>
+                  </View>
                 </View>
                 <View
                   style={{
