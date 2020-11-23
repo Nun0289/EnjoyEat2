@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,6 +15,8 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import SpacialCard from "../component/SpacialCard";
 import { Dimensions } from "react-native";
+import axios from "axios";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const images = [
@@ -62,10 +64,21 @@ const promotionData = [
 ];
 
 const Home = ({ navigation }) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchDate = async () => {
+      const rest = await axios.get("/promotion");
+      // console.log(rest.data);
+      setData(rest.data);
+      return rest;
+    };
+    fetchDate();
+  }, []);
+  console.log(data);
   return (
     <View style={componentStyle.container}>
       <FlatList
-        data={promotionData}
+        data={data}
         ListHeaderComponent={
           <View>
             <View style={{ paddingBottom: 10 }}>
@@ -158,11 +171,11 @@ const Home = ({ navigation }) => {
               onPress={() =>
                 navigation.push("Detail", {
                   id: item.id,
-                  title: item.title,
-                  rate: item.rate,
-                  price: item.price,
-                  detail: item.detail,
-                  image: item.image,
+                  title: item.restName,
+                  rate: item.rating,
+                  price: item.data.price,
+                  detail: item.data.proDes,
+                  image: item.data.proPic,
                 })
               }
               style={{
@@ -200,7 +213,7 @@ const Home = ({ navigation }) => {
                 >
                   <ImageBackground
                     source={{
-                      uri: item.image,
+                      uri: item.data.proPic,
                     }}
                     style={{
                       flex: 1,
@@ -211,7 +224,7 @@ const Home = ({ navigation }) => {
                       resizeMode: "cover",
                     }}
                   >
-                    <FontAwesome
+                    {/* <FontAwesome
                       name={`heart${item.favorite ? "" : "-o"}`}
                       size={30}
                       style={{
@@ -221,7 +234,7 @@ const Home = ({ navigation }) => {
                         position: "absolute",
                         right: 0,
                       }}
-                    />
+                    /> */}
                   </ImageBackground>
                 </View>
                 <View
@@ -251,7 +264,7 @@ const Home = ({ navigation }) => {
                       }}
                     >
                       <Text numberOfLines={1} style={{ fontSize: 16 }}>
-                        {item.title}
+                        {item.restName}
                       </Text>
                     </View>
                     <View
@@ -263,7 +276,7 @@ const Home = ({ navigation }) => {
                     >
                       <View style={{ flexDirection: "row" }}>
                         <Text style={{ fontSize: 18, paddingRight: 5 }}>
-                          {item.rate}
+                          {item.rating}
                         </Text>
                         <FontAwesome name="star" size={20} />
                       </View>
@@ -283,7 +296,7 @@ const Home = ({ navigation }) => {
                       <Text
                         style={{ fontSize: 18, paddingRight: 5, color: "#FFF" }}
                       >
-                        {item.price} .-
+                        {item.data.price} .-
                       </Text>
                     </View>
                   </View>
@@ -310,11 +323,11 @@ const Home = ({ navigation }) => {
                             paddingLeft: 5,
                           }}
                         >
-                          {item.detail}
+                          {item.data.proDes}
                         </Text>
                       </View>
                     </View>
-                    <View
+                    {/* <View
                       style={{
                         flex: 1,
 
@@ -338,7 +351,7 @@ const Home = ({ navigation }) => {
                           <FontAwesome name="user" size={25} />
                         </View>
                       </View>
-                    </View>
+                    </View> */}
                   </View>
                 </View>
               </View>
