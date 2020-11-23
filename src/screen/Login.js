@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,8 +10,32 @@ import {
   Image,
 } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState("");
+  const [error, setError] = useState(false);
+  const loginHandler = async () => {
+    await axios
+      .post("/login", {
+        username: username,
+        password: password,
+      })
+      .then(async (user) => {
+        console.log(user.data);
+        // setUser(user.data);
+        await AsyncStorage.setItem("user", JSON.stringify(user.data));
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+  console.log(JSON.stringify(user));
+
   return (
     <View style={styles.container}>
       <View style={styles.yellowblock}>
@@ -63,6 +87,7 @@ const LoginScreen = () => {
           <TextInput
             style={styles.TextInput}
             placeholder="Enter Username Here!!!!"
+            onChangeText={(text) => setUsername(text)}
           ></TextInput>
         </View>
 
@@ -78,8 +103,10 @@ const LoginScreen = () => {
             Password
           </Text>
           <TextInput
+            secureTextEntry={true}
             style={styles.TextInput}
             placeholder="Enter Password Here!!!!"
+            onChangeText={(text) => setPassword(text)}
           ></TextInput>
         </View>
         <View
@@ -94,6 +121,12 @@ const LoginScreen = () => {
               alignItems: "center",
             }}
           >
+            {error ? (
+              <Text style={{ fontSize: 14, color: "red", marginBottom: 10 }}>
+                username or password incorrect
+              </Text>
+            ) : null}
+
             <TouchableOpacity
               style={{
                 backgroundColor: "blue",
@@ -110,6 +143,7 @@ const LoginScreen = () => {
 
                 elevation: 5,
               }}
+              onPress={loginHandler}
             >
               <View
                 style={{
