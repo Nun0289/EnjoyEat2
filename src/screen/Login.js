@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,13 +8,174 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   Image,
+  Modal,
 } from "react-native";
 import { Dimensions } from "react-native";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
+
 const LoginScreen = () => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.container}>
+      <Modal animationType="slide" visible={modalVisible} transparent={true}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+          }}
+        >
+          <View style={styles.modalView}>
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+              }}
+            >
+              <View
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "#FDD009",
+                  borderRadius: 20,
+                  flexDirection: "column",
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 30,
+                    paddingLeft: 20,
+                    paddingTop: 20,
+                    color: "#000",
+                  }}
+                >
+                  Sign in
+                </Text>
+                <View
+                  style={(styles.rowlogin, { paddingLeft: 20, paddingTop: 30 })}
+                >
+                  <Text
+                    style={{
+                      paddingBottom: 5,
+                      fontSize: 15,
+                      color: "blue",
+                    }}
+                  >
+                    Username
+                  </Text>
+                  <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter Username Here!!!!"
+                  ></TextInput>
+                </View>
+
+                <View
+                  style={(styles.rowlogin, { paddingLeft: 20, paddingTop: 10 })}
+                >
+                  <Text
+                    style={{
+                      paddingBottom: 5,
+                      paddingTop: 10,
+                      fontSize: 15,
+                      color: "blue",
+                    }}
+                  >
+                    Password
+                  </Text>
+                  <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter Password Here!!!!"
+                  ></TextInput>
+                </View>
+                <View
+                  style={(styles.rowlogin, { paddingLeft: 20, paddingTop: 10 })}
+                >
+                  <Text
+                    style={{
+                      paddingBottom: 5,
+                      paddingTop: 10,
+                      fontSize: 15,
+                      color: "blue",
+                    }}
+                  >
+                    Re-Password
+                  </Text>
+                  <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter Re-Password Here!!!!"
+                  ></TextInput>
+                </View>
+                <View
+                  style={(styles.rowlogin, { paddingLeft: 20, paddingTop: 10 })}
+                >
+                  <Text
+                    style={{
+                      paddingBottom: 5,
+                      paddingTop: 10,
+                      fontSize: 15,
+                      color: "blue",
+                    }}
+                  >
+                    Email
+                  </Text>
+                  <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter Email Here!!!!"
+                  ></TextInput>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                  }}
+                >
+                  <View
+                    style={{
+                      flex: 1,
+                      paddingTop: 20,
+                      alignItems: "center",
+                    }}
+                  >
+                    <TouchableOpacity
+                      onPress={() => setModalVisible(!modalVisible)}
+                      style={{
+                        backgroundColor: "blue",
+                        height: 50,
+                        width: "70%",
+                        borderRadius: 10,
+                        shadowColor: "#000",
+                        shadowOffset: {
+                          width: 0,
+                          height: 2,
+                        },
+                        shadowOpacity: 0.25,
+                        shadowRadius: 3.84,
+
+                        elevation: 5,
+                      }}
+                    >
+                      <View
+                        style={{
+                          flex: 1,
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Text style={{ fontSize: 18, color: "#FFF" }}>
+                          Sign Up
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
       <View style={styles.yellowblock}>
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
@@ -132,9 +293,12 @@ const LoginScreen = () => {
           }}
         >
           <Text>If You Don't Have Any Account</Text>
-          <TouchableHighlight style={{ paddingTop: 20 }}>
+          <TouchableOpacity
+            style={{ paddingTop: 20 }}
+            onPress={() => setModalVisible(!modalVisible)}
+          >
             <Text style={{ fontSize: 16, color: "blue" }}>Sign Up Free </Text>
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -195,6 +359,35 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
 
     elevation: 5,
+  },
+  modalView: {
+    backgroundColor: "#EFF1FC",
+    borderRadius: 20,
+    flexDirection: "column",
+    width: "90%",
+    height: "75%",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    textAlign: "center",
   },
 });
 export default LoginScreen;
