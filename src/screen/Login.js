@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import * as SplashScreen from "expo-splash-screen";
-
+import { Dimensions } from "react-native";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 const LoginScreen = () => {
   return (
     <View style={styles.container}>
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
   },
   yellowblock: {
     width: "100%",
-    height: "50%",
+    height: windowHeight / 2,
     backgroundColor: "#FDD009",
     position: "absolute",
     top: 0,
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
   },
   loginbox: {
     width: "80%",
-    height: "50%",
+    height: windowHeight / 2,
     backgroundColor: "#FFF",
     borderRadius: 20,
     position: "absolute",
