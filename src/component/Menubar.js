@@ -68,9 +68,6 @@ const HomeStackScreen = ({ navigation }) => {
         options={{
           animationEnabled: false,
           headerBackTitleVisible: false,
-          headerRight: () => (
-            <SearchIcon navigate={navigation.navigate} from={"SearchUser"} />
-          ),
           animationEnabled: false,
           headerTitleStyle: { fontFamily: "Prompt_300Light" },
           title: "",
@@ -85,9 +82,6 @@ const HomeStackScreen = ({ navigation }) => {
         options={{
           animationEnabled: false,
           headerBackTitleVisible: false,
-          headerRight: () => (
-            <SearchIcon navigate={navigation.navigate} from={"SearchUser"} />
-          ),
           animationEnabled: false,
           headerTitleStyle: { fontFamily: "Prompt_300Light" },
           title: "",
@@ -108,9 +102,6 @@ const FavoriteStackScreen = ({ navigation }) => {
         options={{
           animationEnabled: false,
           headerBackTitleVisible: false,
-          headerRight: () => (
-            <SearchIcon navigate={navigation.navigate} from={"SearchUser"} />
-          ),
           animationEnabled: false,
           headerTitleStyle: { fontFamily: "Prompt_300Light" },
           title: "",
@@ -131,9 +122,6 @@ const NearmeStackScreen = ({ navigation }) => {
         options={{
           animationEnabled: false,
           headerBackTitleVisible: false,
-          headerRight: () => (
-            <SearchIcon navigate={navigation.navigate} from={"SearchUser"} />
-          ),
           animationEnabled: false,
           headerTitleStyle: { fontFamily: "Prompt_300Light" },
           title: "",
@@ -154,9 +142,6 @@ const FriendsStackScreen = ({ navigation }) => {
         options={{
           animationEnabled: false,
           headerBackTitleVisible: false,
-          headerRight: () => (
-            <SearchIcon navigate={navigation.navigate} from={"SearchUser"} />
-          ),
           animationEnabled: false,
           headerTitleStyle: { fontFamily: "Prompt_300Light" },
           title: "",
@@ -177,9 +162,6 @@ const ChatStackScreen = ({ navigation }) => {
         options={{
           animationEnabled: false,
           headerBackTitleVisible: false,
-          headerRight: () => (
-            <SearchIcon navigate={navigation.navigate} from={"SearchUser"} />
-          ),
           animationEnabled: false,
           headerTitleStyle: { fontFamily: "Prompt_300Light" },
           title: "",
