@@ -13,10 +13,11 @@ import {
 import { Dimensions } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { CommonActions } from "@react-navigation/native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.container}>
@@ -257,6 +258,13 @@ const LoginScreen = () => {
             }}
           >
             <TouchableOpacity
+              onPress={() =>
+                navigation.dispatch(
+                  CommonActions.reset({
+                    routes: [{ name: "Root" }],
+                  })
+                )
+              }
               style={{
                 backgroundColor: "blue",
                 height: 50,
