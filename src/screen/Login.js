@@ -445,7 +445,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "column",
     width: "90%",
-    height: "75%",
+    height: windowHeight / 1.3,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

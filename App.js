@@ -22,8 +22,8 @@ export default function App() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="SplashScreens" component={SplashScreens} />
-        <Stack.Screen name="LoginScreen" component={Chat} />
+        {/* <Stack.Screen name="SplashScreens" component={SplashScreens} /> */}
+        {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
         <Stack.Screen name="Root" component={Root} />
       </Stack.Navigator>
     </NavigationContainer>

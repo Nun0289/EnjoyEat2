@@ -5,7 +5,7 @@ import { CommonActions } from "@react-navigation/native";
 
 const image = {
   uri:
-    "https://www.uidownload.com/files/689/983/630/hand-drawn-cartoon-food-seamless-background-vector.jpg",
+    "https://media.discordapp.net/attachments/741539980488474658/780385127561429012/Artboard_1.png?width=309&height=670",
 };
 
 const SplashScreens = ({ navigation }) => {
