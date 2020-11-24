@@ -48,7 +48,7 @@ const Account = () => {
         <View
           style={{
             width: "90%",
-            height: 500,
+            height: 550,
             backgroundColor: "#FFF",
             borderRadius: 20,
             marginTop: 150,
