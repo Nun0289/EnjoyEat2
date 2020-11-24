@@ -11,6 +11,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -374,124 +375,126 @@ const Detail = ({ route, navigation }) => {
         data={room}
         renderItem={({ item }) => (
           <View style={{ paddingTop: 20 }}>
-            <View
-              style={{
-                width: windowWidth - 50,
-                height: windowHeight / 8,
-                borderRadius: 20,
-                backgroundColor: "#FFF",
-                borderWidth: 0.5,
-                flexDirection: "row",
-              }}
-            >
+            <TouchableOpacity onPress={() => navigation.push("Rate")}>
               <View
                 style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Image
-                  style={{
-                    width: "80%",
-                    height: windowHeight / 12,
-                    borderRadius: 100,
-                  }}
-                  source={{
-                    uri: item.image,
-                  }}
-                />
-              </View>
-              <View
-                style={{
-                  flex: 2,
-                  flexDirection: "column",
+                  width: windowWidth - 50,
+                  height: windowHeight / 8,
+                  borderRadius: 20,
+                  backgroundColor: "#FFF",
+                  borderWidth: 0.5,
+                  flexDirection: "row",
                 }}
               >
                 <View
                   style={{
                     flex: 1,
-                    borderWidth: 1,
-                    borderTopLeftRadius: 10,
-                    borderBottomLeftRadius: 10,
-                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Image
+                    style={{
+                      width: "80%",
+                      height: windowHeight / 12,
+                      borderRadius: 100,
+                    }}
+                    source={{
+                      uri: item.image,
+                    }}
+                  />
+                </View>
+                <View
+                  style={{
+                    flex: 2,
+                    flexDirection: "column",
                   }}
                 >
                   <View
                     style={{
-                      flex: 2,
+                      flex: 1,
+                      borderWidth: 1,
+                      borderTopLeftRadius: 10,
+                      borderBottomLeftRadius: 10,
+                      flexDirection: "row",
+                    }}
+                  >
+                    <View
+                      style={{
+                        flex: 2,
+                        justifyContent: "center",
+                        paddingLeft: 10,
+                      }}
+                    >
+                      <Text style={{ fontSize: 15 }}>{item.username}</Text>
+                    </View>
+                    <View
+                      style={{
+                        flex: 1,
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <View
+                        style={{
+                          flexDirection: "row",
+                        }}
+                      >
+                        <Text style={{ fontSize: 18, paddingRight: 5 }}>
+                          {item.userrate}
+                        </Text>
+                        <FontAwesome name="star" size={25} color="yellow" />
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    style={{
+                      flex: 1,
                       justifyContent: "center",
                       paddingLeft: 10,
                     }}
                   >
-                    <Text style={{ fontSize: 15 }}>{item.username}</Text>
+                    <Text numberOfLines={1}>{item.roomtittle}</Text>
+                  </View>
+                </View>
+                <View
+                  style={{
+                    flex: 0.8,
+                    borderWidth: 1,
+                    borderTopRightRadius: 20,
+                    borderBottomRightRadius: 20,
+                    flexDirection: "column",
+                  }}
+                >
+                  <View
+                    style={{
+                      flex: 1,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      backgroundColor: "#5DADE2",
+                      borderTopRightRadius: 20,
+                    }}
+                  >
+                    <Text style={{ color: "#FFF", fontSize: 17 }}>
+                      ชาย {item.female} คน
+                    </Text>
                   </View>
                   <View
                     style={{
                       flex: 1,
                       justifyContent: "center",
                       alignItems: "center",
+                      backgroundColor: "#FF33A2",
+                      borderBottomRightRadius: 20,
                     }}
                   >
-                    <View
-                      style={{
-                        flexDirection: "row",
-                      }}
-                    >
-                      <Text style={{ fontSize: 18, paddingRight: 5 }}>
-                        {item.userrate}
-                      </Text>
-                      <FontAwesome name="star" size={25} color="yellow" />
-                    </View>
+                    <Text style={{ color: "#FFF", fontSize: 17 }}>
+                      หญิง {item.male} คน
+                    </Text>
                   </View>
                 </View>
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    paddingLeft: 10,
-                  }}
-                >
-                  <Text numberOfLines={1}>{item.roomtittle}</Text>
-                </View>
               </View>
-              <View
-                style={{
-                  flex: 0.8,
-                  borderWidth: 1,
-                  borderTopRightRadius: 20,
-                  borderBottomRightRadius: 20,
-                  flexDirection: "column",
-                }}
-              >
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#5DADE2",
-                    borderTopRightRadius: 20,
-                  }}
-                >
-                  <Text style={{ color: "#FFF", fontSize: 17 }}>
-                    ชาย {item.female} คน
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#FF33A2",
-                    borderBottomRightRadius: 20,
-                  }}
-                >
-                  <Text style={{ color: "#FFF", fontSize: 17 }}>
-                    หญิง {item.male} คน
-                  </Text>
-                </View>
-              </View>
-            </View>
+            </TouchableOpacity>
           </View>
         )}
       />
