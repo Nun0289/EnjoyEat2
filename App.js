@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Menubar from "./src/component/Menubar";
 import SplashScreens from "./src/screen/SplashScreen";
 import LoginScreen from "./src/screen/Login";
+import Chat from "./src/screen/Chat";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 const Stack = createStackNavigator();
@@ -16,7 +17,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name="SplashScreens" component={SplashScreens} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="LoginScreen" component={Chat} />
         <Stack.Screen name="Root" component={Root} />
       </Stack.Navigator>
     </NavigationContainer>
