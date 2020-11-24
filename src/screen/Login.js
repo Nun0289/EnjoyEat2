@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,14 +10,73 @@ import {
   Image,
   Modal,
 } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { Dimensions } from "react-native";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { CommonActions } from "@react-navigation/native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const LoginScreen = ({ navigation }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState("");
+  const [error, setError] = useState(false);
+
+  const [signPassword, setSignPassword] = useState("");
+  const [signUsername, setSignUsername] = useState("");
+  const [signEmail, setSignEmail] = useState("");
+
+  const loginHandler = async () => {
+    await axios
+      .post("/login", {
+        username: username,
+        password: password,
+      })
+      .then(async (user) => {
+        console.log(user.data);
+        axios.defaults.headers.common["Authorization"] = "Bearer";
+        console.log(user);
+        await AsyncStorage.setItem("user", JSON.stringify(user.data));
+        // navigation.dispatch(
+        //   CommonActions.reset({
+        //     routes: [{ name: "Root" }],
+        //   })
+        // );
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+
+  const signupHandler = async () => {
+    await axios
+      .post("/register", {
+        firstName: "",
+        lastName: "",
+        nickname: "",
+        email: signEmail,
+        username: signUsername,
+        password: signPassword,
+        description: "",
+        phone: "",
+        gender: "",
+        age: 20,
+      })
+      .then(async (user) => {
+        console.log(user.data);
+        setModalVisible(!modalVisible);
+        // await AsyncStorage.setItem("user", JSON.stringify(user.data));
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.container}>
@@ -54,7 +113,7 @@ const LoginScreen = ({ navigation }) => {
                     color: "#000",
                   }}
                 >
-                  Sign in
+                  Sign up
                 </Text>
                 <View
                   style={(styles.rowlogin, { paddingLeft: 20, paddingTop: 30 })}
@@ -71,6 +130,7 @@ const LoginScreen = ({ navigation }) => {
                   <TextInput
                     style={styles.TextInput}
                     placeholder="Enter Username Here!!!!"
+                    onChangeText={(text) => setSignUsername(text)}
                   ></TextInput>
                 </View>
 
@@ -90,6 +150,7 @@ const LoginScreen = ({ navigation }) => {
                   <TextInput
                     style={styles.TextInput}
                     placeholder="Enter Password Here!!!!"
+                    onChangeText={(text) => setSignPassword(text)}
                   ></TextInput>
                 </View>
                 <View
@@ -126,6 +187,7 @@ const LoginScreen = ({ navigation }) => {
                   <TextInput
                     style={styles.TextInput}
                     placeholder="Enter Email Here!!!!"
+                    onChangeText={(text) => setSignEmail(text)}
                   ></TextInput>
                 </View>
                 <View
@@ -141,7 +203,7 @@ const LoginScreen = ({ navigation }) => {
                     }}
                   >
                     <TouchableOpacity
-                      onPress={() => setModalVisible(!modalVisible)}
+                      onPress={() => signupHandler()}
                       style={{
                         backgroundColor: "blue",
                         height: 50,
@@ -177,6 +239,7 @@ const LoginScreen = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+
       <View style={styles.yellowblock}>
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
@@ -226,6 +289,7 @@ const LoginScreen = ({ navigation }) => {
           <TextInput
             style={styles.TextInput}
             placeholder="Enter Username Here!!!!"
+            onChangeText={(text) => setUsername(text)}
           ></TextInput>
         </View>
 
@@ -241,8 +305,10 @@ const LoginScreen = ({ navigation }) => {
             Password
           </Text>
           <TextInput
+            secureTextEntry={true}
             style={styles.TextInput}
             placeholder="Enter Password Here!!!!"
+            onChangeText={(text) => setPassword(text)}
           ></TextInput>
         </View>
         <View
@@ -257,14 +323,20 @@ const LoginScreen = ({ navigation }) => {
               alignItems: "center",
             }}
           >
+            {error ? (
+              <Text style={{ fontSize: 14, color: "red", marginBottom: 10 }}>
+                username or password incorrect
+              </Text>
+            ) : null}
+
             <TouchableOpacity
-              onPress={() =>
-                navigation.dispatch(
-                  CommonActions.reset({
-                    routes: [{ name: "Root" }],
-                  })
-                )
-              }
+              // onPress={() =>
+              //   navigation.dispatch(
+              //     CommonActions.reset({
+              //       routes: [{ name: "Root" }],
+              //     })
+              //   )
+              // }
               style={{
                 backgroundColor: "blue",
                 height: 50,
@@ -280,6 +352,7 @@ const LoginScreen = ({ navigation }) => {
 
                 elevation: 5,
               }}
+              onPress={loginHandler}
             >
               <View
                 style={{
