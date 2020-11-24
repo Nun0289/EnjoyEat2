@@ -18,7 +18,6 @@ import { AppLoading } from "expo";
 
 const HomeStack = createStackNavigator();
 const FavoriteStack = createStackNavigator();
-const AccountStack = createStackNavigator();
 const FriendsStack = createStackNavigator();
 const ChatStack = createStackNavigator();
 const DetailStack = createStackNavigator();
@@ -248,7 +247,7 @@ const Menubar = () => {
 
       <Tab.Screen
         name="Account"
-        component={AccountStackScreen}
+        component={Account}
         options={{
           tabBarLabel: "Account",
           tabBarIcon: ({ color }) => (

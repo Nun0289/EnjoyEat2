@@ -475,7 +475,7 @@ const Detail = ({ route, navigation }) => {
                       borderTopRightRadius: 20,
                     }}
                   >
-                    <Text style={{ color: "#FFF", fontSize: 17 }}>
+                    <Text style={{ color: "#FFF", fontSize: 13 }}>
                       ชาย {item.female} คน
                     </Text>
                   </View>
@@ -488,7 +488,7 @@ const Detail = ({ route, navigation }) => {
                       borderBottomRightRadius: 20,
                     }}
                   >
-                    <Text style={{ color: "#FFF", fontSize: 17 }}>
+                    <Text style={{ color: "#FFF", fontSize: 13 }}>
                       หญิง {item.male} คน
                     </Text>
                   </View>
