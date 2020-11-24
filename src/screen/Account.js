@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 const Nearme = () => {
   return (
     <View style={styles.container}>
-      <Text>Nearme.js!</Text>
+      <Text>Account.sjs!</Text>
     </View>
   );
 };

@@ -14,6 +14,7 @@ import homeStyle from "../style/homestyle";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import SpacialCard from "../component/SpacialCard";
+import Rateuser from "./Rateuser";
 import { Dimensions } from "react-native";
 import axios from "axios";
 

@@ -7,19 +7,22 @@ import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Home from "../screen/Home";
 import Favorite from "../screen/Favorite";
-import Nearme from "../screen/Nearme";
+import Account from "../screen/Account";
 import Friends from "../screen/Friends";
 import Chat from "../screen/Chat";
+import Rate from "../screen/Rate";
 import Detail from "../screen/Detail";
+import Rateuser from "../screen/Rateuser";
 import { useFonts, Prompt_300Light } from "@expo-google-fonts/prompt";
 import { AppLoading } from "expo";
 
 const HomeStack = createStackNavigator();
 const FavoriteStack = createStackNavigator();
-const NearmeStack = createStackNavigator();
+const AccountStack = createStackNavigator();
 const FriendsStack = createStackNavigator();
 const ChatStack = createStackNavigator();
 const DetailStack = createStackNavigator();
+const RateuserStack = createStackNavigator();
 const SearchIcon = ({ navigate, from }) => {
   return (
     <TouchableOpacity
@@ -90,6 +93,34 @@ const HomeStackScreen = ({ navigation }) => {
           },
         }}
       />
+      <HomeStack.Screen
+        name="Rate"
+        component={Rate}
+        options={{
+          animationEnabled: false,
+          headerBackTitleVisible: false,
+          animationEnabled: false,
+          headerTitleStyle: { fontFamily: "Prompt_300Light" },
+          title: "",
+          headerStyle: {
+            backgroundColor: "#FDD009",
+          },
+        }}
+      />
+      <HomeStack.Screen
+        name="Rateuser"
+        component={Rateuser}
+        options={{
+          animationEnabled: false,
+          headerBackTitleVisible: false,
+          animationEnabled: false,
+          headerTitleStyle: { fontFamily: "Prompt_300Light" },
+          title: "",
+          headerStyle: {
+            backgroundColor: "#FDD009",
+          },
+        }}
+      />
     </HomeStack.Navigator>
   );
 };
@@ -113,12 +144,12 @@ const FavoriteStackScreen = ({ navigation }) => {
     </FavoriteStack.Navigator>
   );
 };
-const NearmeStackScreen = ({ navigation }) => {
+const AccountStackScreen = ({ navigation }) => {
   return (
-    <NearmeStack.Navigator>
-      <NearmeStack.Screen
-        name="Nearme"
-        component={Nearme}
+    <AccountStack.Navigator>
+      <AccountStack.Screen
+        name="Account"
+        component={Account}
         options={{
           animationEnabled: false,
           headerBackTitleVisible: false,
@@ -130,7 +161,7 @@ const NearmeStackScreen = ({ navigation }) => {
           },
         }}
       />
-    </NearmeStack.Navigator>
+    </AccountStack.Navigator>
   );
 };
 const FriendsStackScreen = ({ navigation }) => {
@@ -203,16 +234,7 @@ const Menubar = () => {
           ),
         }}
       />
-      <Tab.Screen
-        name="Nearme"
-        component={NearmeStackScreen}
-        options={{
-          tabBarLabel: "Nearme",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="map-marker-alt" color={color} size={20} />
-          ),
-        }}
-      />
+
       <Tab.Screen
         name="Home"
         component={HomeStackScreen}
@@ -223,13 +245,14 @@ const Menubar = () => {
           ),
         }}
       />
+
       <Tab.Screen
-        name="Friends"
-        component={FriendsStackScreen}
+        name="Account"
+        component={AccountStackScreen}
         options={{
-          tabBarLabel: "Friends",
+          tabBarLabel: "Account",
           tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="user-friends" color={color} size={20} />
+            <FontAwesome5 name="user-circle" color={color} size={20} />
           ),
         }}
       />
