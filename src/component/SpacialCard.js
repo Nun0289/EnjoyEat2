@@ -9,12 +9,6 @@ const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.4);
 const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 3);
 
-const DATA = [];
-for (let i = 0; i < 5; i++) {
-  DATA.push(i);
-}
-console.log(DATA);
-
 export default class SpacialCard extends Component {
   state = {
     index: 0,
@@ -24,14 +18,13 @@ export default class SpacialCard extends Component {
     this._renderItem = this._renderItem.bind(this);
   }
 
-  _renderItem({ item }) {
+  _renderItem(data) {
     return (
       <View style={styles.itemContainer}>
         <Image
           style={{ width: "90%", height: "90%" }}
           source={{
-            uri:
-              "https://www.2u.in.th/wp-content/uploads/2020/02/Promotion-the-pizza-company-buy-1-free-1-for-2020-1024x680-1.jpg",
+            uri: data.item.data.proPic,
           }}
         />
       </View>
@@ -43,7 +36,7 @@ export default class SpacialCard extends Component {
       <View>
         <Carousel
           ref={(c) => (this.carousel = c)}
-          data={DATA}
+          data={this.props.data}
           renderItem={this._renderItem}
           sliderWidth={SLIDER_WIDTH}
           itemWidth={ITEM_WIDTH}

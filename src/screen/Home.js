@@ -69,13 +69,11 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     const fetchDate = async () => {
       const rest = await axios.get("/promotion");
-      // console.log(rest.data);
       setData(rest.data);
       return rest;
     };
     fetchDate();
   }, []);
-  console.log(data);
   return (
     <View style={componentStyle.container}>
       <FlatList
@@ -147,7 +145,7 @@ const Home = ({ navigation }) => {
             </View>
             <View style={{ paddingTop: 20 }}>
               <Text style={{ fontSize: 23 }}>Spacial For You</Text>
-              <SpacialCard />
+              <SpacialCard data={data} />
             </View>
             <View style={{ paddingBottom: 10, paddingTop: 10 }}>
               <Text style={{ fontSize: 23 }}>Feed</Text>

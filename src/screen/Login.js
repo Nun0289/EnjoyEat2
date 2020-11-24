@@ -36,15 +36,14 @@ const LoginScreen = ({ navigation }) => {
         password: password,
       })
       .then(async (user) => {
-        console.log(user.data);
-        axios.defaults.headers.common["Authorization"] = "Bearer";
-        console.log(user);
+        axios.defaults.headers.common["Authorization"] =
+          (await "Bearer ") + user.data.token;
         await AsyncStorage.setItem("user", JSON.stringify(user.data));
-        // navigation.dispatch(
-        //   CommonActions.reset({
-        //     routes: [{ name: "Root" }],
-        //   })
-        // );
+        navigation.dispatch(
+          CommonActions.reset({
+            routes: [{ name: "Root" }],
+          })
+        );
       })
       .catch((err) => {
         setError(true);
