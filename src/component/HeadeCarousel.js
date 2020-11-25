@@ -1,5 +1,12 @@
 import * as React from "react";
-import { StyleSheet, View, ScrollView, Dimensions, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  Dimensions,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 
 const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Dimensions.get("window").height;
@@ -55,11 +62,24 @@ class HeadCarousel extends React.Component {
           ref={this.scrollRef}
         >
           {images.map((image) => (
-            <Image
-              style={styles.backgroundImage}
-              source={{ uri: image }}
-              key={image}
-            />
+            <TouchableOpacity
+              onPress={() =>
+                navigation.push("Detail", {
+                  id: data.item.id,
+                  title: data.item.restName,
+                  rate: data.item.rating,
+                  price: data.item.data.price,
+                  detail: data.item.data.proDes,
+                  image: data.item.data.proPic,
+                })
+              }
+            >
+              <Image
+                style={styles.backgroundImage}
+                source={{ uri: image }}
+                key={image}
+              />
+            </TouchableOpacity>
           ))}
         </ScrollView>
         <View style={styles.circleDiv}>

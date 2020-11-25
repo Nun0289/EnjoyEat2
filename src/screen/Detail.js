@@ -408,7 +408,9 @@ const Detail = ({ route, navigation }) => {
         data={post}
         renderItem={({ item }) => (
           <View style={{ paddingTop: 20 }}>
-            <TouchableOpacity onPress={() => navigation.push("Chat")}>
+            <TouchableOpacity
+              onPress={() => navigation.push("Chat", { id: route.params.id })}
+            >
               <View
                 style={{
                   width: windowWidth - 50,
