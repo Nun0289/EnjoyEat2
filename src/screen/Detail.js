@@ -56,27 +56,6 @@ const Detail = ({ route, navigation }) => {
     };
     fetchDate();
   }, []);
-
-  const createPost = async () => {
-    await axios
-      .post("/post/" + id, {
-        promotionId: id,
-        description: description,
-        unit: {
-          m: male,
-          f: female,
-        },
-        exp: exp,
-      })
-      .then(async (post) => {
-        setModalVisible(!modalVisible);
-      })
-      .catch((err) => {
-        setError(true);
-        console.log(err);
-      });
-  };
-
   return (
     <View style={styles.container}>
       <Modal animationType="slide" visible={modalVisible} transparent={true}>
@@ -135,7 +114,6 @@ const Detail = ({ route, navigation }) => {
                     borderRadius: 20,
                     paddingLeft: 10,
                   }}
-                  onChangeText={(text) => setDescription(text)}
                 />
               </View>
             </View>
@@ -271,7 +249,6 @@ const Detail = ({ route, navigation }) => {
                       paddingLeft: 10,
                       borderColor: "gray",
                     }}
-                    onChangeText={(time) => setExp(time)}
                   />
                   <Text
                     style={{ fontSize: 20, paddingTop: 10, paddingLeft: 10 }}
@@ -305,7 +282,7 @@ const Detail = ({ route, navigation }) => {
                 </TouchableHighlight>
               </View>
               <View style={{ flex: 1 }}>
-                <TouchableHighlight onPress={createPost}>
+                <TouchableHighlight>
                   <View
                     style={{
                       height: "100%",

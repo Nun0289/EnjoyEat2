@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 import axios from "axios";
