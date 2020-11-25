@@ -32,6 +32,9 @@ const Detail = ({ route, navigation }) => {
   const [male, setMale] = useState(0);
   const [female, setFeMale] = useState(0);
   const [post, setPost] = useState([]);
+  const [description, setDescription] = useState("");
+  const [exp, setExp] = useState(0);
+  const [unit, setUnit] = useState({ m: 0, f: 0 });
 
   const room = [
     {
@@ -54,6 +57,21 @@ const Detail = ({ route, navigation }) => {
     };
     fetchDate();
   }, []);
+
+  const createPost = async () => {
+    await axios
+      .post("/post" + id, {})
+      .then(async (user) => {
+        console.log(user.data);
+        setModalVisible(!modalVisible);
+        // await AsyncStorage.setItem("user", JSON.stringify(user.data));
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
+      });
+  };
+
   return (
     <View style={styles.container}>
       <Modal animationType="slide" visible={modalVisible} transparent={true}>
