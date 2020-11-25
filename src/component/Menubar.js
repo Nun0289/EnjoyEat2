@@ -25,11 +25,11 @@ const NearStack = createStackNavigator();
 const DetailStack = createStackNavigator();
 const RateuserStack = createStackNavigator();
 
-const SearchIcon = ({ navigate, from, id }) => {
+const SearchIcon = ({ navigate, from }) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigate(from, { from: from, id: id });
+        navigate(from, { from: from });
       }}
     >
       <FontAwesome5

@@ -14,7 +14,6 @@ const SplashScreens = ({ navigation }) => {
       const user_id = await AsyncStorage.getItem("token");
       console.log("sussec");
       if (user_id) {
-        console.log("1c");
         setTimeout(function () {
           navigation.dispatch(
             CommonActions.reset({

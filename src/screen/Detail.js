@@ -32,9 +32,6 @@ const Detail = ({ route, navigation }) => {
   const [male, setMale] = useState(0);
   const [female, setFeMale] = useState(0);
   const [post, setPost] = useState([]);
-  const [description, setDescription] = useState("");
-  const [exp, setExp] = useState(0);
-  // const [unit, setUnit] = useState({ m: 0, f: 0 });
 
   const room = [
     {
@@ -57,27 +54,6 @@ const Detail = ({ route, navigation }) => {
     };
     fetchDate();
   }, []);
-
-  const createPost = async () => {
-    await axios
-      .post("/post/" + id, {
-        promotionId: id,
-        description: description,
-        unit: {
-          m: male,
-          f: female,
-        },
-        exp: exp,
-      })
-      .then(async (post) => {
-        setModalVisible(!modalVisible);
-      })
-      .catch((err) => {
-        setError(true);
-        console.log(err);
-      });
-  };
-
   return (
     <View style={styles.container}>
       <Modal animationType="slide" visible={modalVisible} transparent={true}>
@@ -136,7 +112,6 @@ const Detail = ({ route, navigation }) => {
                     borderRadius: 20,
                     paddingLeft: 10,
                   }}
-                  onChangeText={(text) => setDescription(text)}
                 />
               </View>
             </View>
@@ -272,7 +247,6 @@ const Detail = ({ route, navigation }) => {
                       paddingLeft: 10,
                       borderColor: "gray",
                     }}
-                    onChangeText={(time) => setExp(time)}
                   />
                   <Text
                     style={{ fontSize: 20, paddingTop: 10, paddingLeft: 10 }}
@@ -306,7 +280,7 @@ const Detail = ({ route, navigation }) => {
                 </TouchableHighlight>
               </View>
               <View style={{ flex: 1 }}>
-                <TouchableHighlight onPress={createPost}>
+                <TouchableHighlight>
                   <View
                     style={{
                       height: "100%",
@@ -434,9 +408,7 @@ const Detail = ({ route, navigation }) => {
         data={post}
         renderItem={({ item }) => (
           <View style={{ paddingTop: 20 }}>
-            <TouchableOpacity
-              onPress={() => navigation.push("Chat", { id: route.params.id })}
-            >
+            <TouchableOpacity onPress={() => navigation.push("Chat")}>
               <View
                 style={{
                   width: windowWidth - 50,
