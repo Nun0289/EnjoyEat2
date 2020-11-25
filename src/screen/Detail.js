@@ -25,7 +25,7 @@ const windowHeight = Dimensions.get("window").height;
 
 const Detail = ({ route, navigation }) => {
   // favol ต่อ API
-  const [favol, showFavol] = useState(true);
+  const [fav, setFav] = useState(false);
   //
   const [modalVisible, setModalVisible] = useState(false);
   const { id, title, rate, price, detail, image } = route.params;
@@ -34,7 +34,6 @@ const Detail = ({ route, navigation }) => {
   const [post, setPost] = useState([]);
   const [description, setDescription] = useState("");
   const [exp, setExp] = useState(0);
-  // const [unit, setUnit] = useState({ m: 0, f: 0 });
 
   const room = [
     {
@@ -325,6 +324,7 @@ const Detail = ({ route, navigation }) => {
           </View>
         </View>
       </Modal>
+
       <View
         style={{
           width: "100%",
@@ -394,9 +394,9 @@ const Detail = ({ route, navigation }) => {
                   alignItems: "center",
                 }}
               >
-                <TouchableWithoutFeedback onPress={() => showFavol(!favol)}>
+                <TouchableWithoutFeedback onPress={() => setFev(!fev)}>
                   <FontAwesome
-                    name={`heart${favol ? "" : "-o"}`}
+                    name={`heart${fav ? "" : "-o"}`}
                     size={35}
                     style={{
                       color: "red",
