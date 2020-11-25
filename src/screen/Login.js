@@ -268,7 +268,7 @@ const LoginScreen = ({ navigation }) => {
                 borderRadius: 100,
               }}
               source={{
-                uri: "https://reactnative.dev/img/tiny_logo.png",
+                uri: "https://i.imgur.com/5Lr24UZ.png",
               }}
             />
           </View>

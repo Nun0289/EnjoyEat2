@@ -4,8 +4,7 @@ import styles from "../style/splashscreenstyle";
 import { CommonActions } from "@react-navigation/native";
 
 const image = {
-  uri:
-    "https://www.uidownload.com/files/689/983/630/hand-drawn-cartoon-food-seamless-background-vector.jpg",
+  uri:"https://i.imgur.com/VWRPaey.png"
 };
 
 const SplashScreens = ({ navigation }) => {
