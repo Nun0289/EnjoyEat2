@@ -124,8 +124,6 @@ const Detail = ({ route, navigation }) => {
                   multiline
                   numberOfLines={4}
                   style={{
-                    borderColor: "gray",
-                    borderWidth: 1,
                     backgroundColor: "#FFF",
                     width: "90%",
                     height: 100,
@@ -139,7 +137,6 @@ const Detail = ({ route, navigation }) => {
               style={{
                 flex: 1,
                 flexDirection: "row",
-                borderWidth: 1,
               }}
             >
               <View
@@ -154,12 +151,17 @@ const Detail = ({ route, navigation }) => {
                     flex: 1,
                     alignItems: "center",
                     paddingLeft: 10,
-                    borderWidth: 1,
                   }}
                 >
                   <FontAwesome name="male" size={40} />
                   <View style={{ paddingLeft: 20 }}>
-                    <FontAwesome name="plus-square" size={30} />
+                    <TouchableOpacity
+                      onPress={() => {
+                        setMale(male + 1);
+                      }}
+                    >
+                      <FontAwesome name="plus-square" size={30} />
+                    </TouchableOpacity>
                   </View>
                   <View style={{ paddingLeft: 10 }}>
                     <View
@@ -167,9 +169,9 @@ const Detail = ({ route, navigation }) => {
                         backgroundColor: "#FFF",
                         width: 30,
                         height: 30,
+                        borderWidth: 1,
                         justifyContent: "center",
                         alignItems: "center",
-                        borderWidth: 1,
                         borderRadius: 5,
                         borderColor: "gray",
                       }}
@@ -178,7 +180,13 @@ const Detail = ({ route, navigation }) => {
                     </View>
                   </View>
                   <View style={{ paddingLeft: 10 }}>
-                    <FontAwesome name="minus-square" size={30} />
+                    <TouchableOpacity
+                      onPress={() => {
+                        setMale(male - 1);
+                      }}
+                    >
+                      <FontAwesome name="minus-square" size={30} />
+                    </TouchableOpacity>
                   </View>
                 </View>
                 <View
@@ -191,15 +199,21 @@ const Detail = ({ route, navigation }) => {
                     style={{
                       flexDirection: "row",
                       flex: 1,
+
                       alignItems: "center",
                       paddingLeft: 10,
-                      borderWidth: 1,
                       borderColor: "gray",
                     }}
                   >
                     <FontAwesome name="female" size={40} />
                     <View style={{ paddingLeft: 20 }}>
-                      <FontAwesome name="plus-square" size={30} />
+                      <TouchableOpacity
+                        onPress={() => {
+                          setFeMale(female + 1);
+                        }}
+                      >
+                        <FontAwesome name="plus-square" size={30} />
+                      </TouchableOpacity>
                     </View>
                     <View style={{ paddingLeft: 10 }}>
                       <View
@@ -214,11 +228,17 @@ const Detail = ({ route, navigation }) => {
                           borderColor: "gray",
                         }}
                       >
-                        <Text style={{ fontSize: 18 }}>{male}</Text>
+                        <Text style={{ fontSize: 18 }}>{female}</Text>
                       </View>
                     </View>
                     <View style={{ paddingLeft: 10 }}>
-                      <FontAwesome name="minus-square" size={30} />
+                      <TouchableOpacity
+                        onPress={() => {
+                          setFeMale(female - 1);
+                        }}
+                      >
+                        <FontAwesome name="minus-square" size={30} />
+                      </TouchableOpacity>
                     </View>
                   </View>
                 </View>
@@ -239,8 +259,8 @@ const Detail = ({ route, navigation }) => {
                     style={{
                       borderWidth: 1,
                       backgroundColor: "#FFF",
-                      width: 50,
-                      height: 50,
+                      width: 40,
+                      height: 40,
                       borderRadius: 10,
                       paddingLeft: 10,
                       borderColor: "gray",
