@@ -11,7 +11,7 @@ const image = {
 const SplashScreens = ({ navigation }) => {
   useEffect(() => {
     const checkStorage = async () => {
-      const user_id = await AsyncStorage.getItem("token");
+      const user_id = await AsyncStorage.getItem("user");
       if (user_id) {
         setTimeout(function () {
           navigation.dispatch(
