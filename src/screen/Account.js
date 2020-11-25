@@ -15,6 +15,7 @@ import Constants from "expo-constants";
 import axios from "axios";
 import { Dimensions } from "react-native";
 import { CommonActions } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const Account = ({ navigation }) => {
   const [image, setImage] = useState(null);
 

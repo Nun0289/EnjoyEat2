@@ -25,11 +25,11 @@ const NearStack = createStackNavigator();
 const DetailStack = createStackNavigator();
 const RateuserStack = createStackNavigator();
 
-const SearchIcon = ({ navigate, from, id }) => {
+const SearchIcon = ({ navigate, from }) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigate(from, { from: from, id: id });
+        navigate(from, { from: from });
       }}
     >
       <FontAwesome5
@@ -114,7 +114,7 @@ const HomeStackScreen = ({ navigation, route }) => {
         component={Chat}
         options={{
           headerRight: () => (
-            <SearchIcon navigate={navigation.navigate} from={"Rate"} id={id} />
+            <SearchIcon navigate={navigation.navigate} from={"Rate"} />
           ),
           headerTitleStyle: { fontFamily: "Prompt_300Light" },
           headerBackTitleVisible: false,

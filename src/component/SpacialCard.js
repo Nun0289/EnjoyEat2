@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  View,
-  Dimensions,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Dimensions, StyleSheet, Image } from "react-native";
 
 import Carousel from "react-native-snap-carousel"; // Version can be specified in package.json
 
@@ -28,25 +21,12 @@ export default class SpacialCard extends Component {
   _renderItem(data) {
     return (
       <View style={styles.itemContainer}>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.push("Detail", {
-              id: data.item.id,
-              title: data.item.restName,
-              rate: data.item.rating,
-              price: data.item.data.price,
-              detail: data.item.data.proDes,
-              image: data.item.data.proPic,
-            })
-          }
-        >
-          <Image
-            style={{ width: "90%", height: "90%" }}
-            source={{
-              uri: data.item.data.proPic,
-            }}
-          />
-        </TouchableOpacity>
+        <Image
+          style={{ width: "90%", height: "90%" }}
+          source={{
+            uri: data.item.data.proPic,
+          }}
+        />
       </View>
     );
   }

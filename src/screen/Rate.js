@@ -17,8 +17,6 @@ import StarRating from "react-native-star-rating";
 import { TextInput } from "react-native-gesture-handler";
 import { CommonActions } from "@react-navigation/native";
 const Rate = ({ navigation, route }) => {
-  const { id } = route.params;
-  console.log(id);
   const [starCount, onStarRatingPress] = useState(0);
   return (
     <View style={styles.container}>
