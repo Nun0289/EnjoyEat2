@@ -54,7 +54,6 @@ const Detail = ({ route, navigation }) => {
     };
     fetchDate();
   }, []);
-  console.log(post);
   return (
     <View style={styles.container}>
       <Modal animationType="slide" visible={modalVisible} transparent={true}>

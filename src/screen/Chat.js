@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useCallback, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, YellowBox } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 import * as firebase from "firebase";
 import "firebase/firestore";
@@ -24,7 +24,7 @@ const db = firebase.firestore();
 const chatsRef = db.collection("chats");
 
 export default function Chat({ navigation }) {
-  const [user, setUser] = useState(user);
+  const [user, setUser] = useState(null);
   const [name, setName] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -59,10 +59,12 @@ export default function Chat({ navigation }) {
   );
 
   async function readUser() {
-    let user = await AsyncStorage.getItem("user");
-    user = await JSON.parse(user);
+    let getUser = await AsyncStorage.getItem("user");
+    getUser = await JSON.parse(getUser);
+    let user = { _id: getUser.user[0].id, name: getUser.user[0].nickname };
+    console.log(user);
     if (user) {
-      await setUser(user.user[0].nickname);
+      await setUser(user);
     }
   }
 
@@ -77,25 +79,14 @@ export default function Chat({ navigation }) {
     const writes = messages.map((m) => chatsRef.add(m));
     await Promise.all(writes);
   }
-
-  // console.log("- - - - - - - - - - - - - - - - - - - -");
-  // console.log({ messages });
-  // console.log("- - - - - - - - - - - - - - - - - - - -");
-
   return (
     <View style={styles.container}>
       <GiftedChat
+        renderUsernameOnMessage={true}
         messages={messages}
-        user={{ name: user }}
+        user={user}
         onSend={handleSend}
       />
-      {/* <GiftedChat
-        messages={messages}
-        alignTop={false}
-        renderUsernameOnMessage={true}
-        onSend={(messages) => onSend(messages)}
-        user={{ _id: 1, name: "nice" }}
-      /> */}
     </View>
   );
 }
