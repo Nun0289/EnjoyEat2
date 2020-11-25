@@ -371,7 +371,7 @@ const Detail = ({ route, navigation }) => {
                   alignItems: "center",
                 }}
               >
-                <TouchableWithoutFeedback onPress={() => setFev(!fev)}>
+                <TouchableWithoutFeedback onPress={() => setFav(!fav)}>
                   <FontAwesome
                     name={`heart${fav ? "" : "-o"}`}
                     size={35}
