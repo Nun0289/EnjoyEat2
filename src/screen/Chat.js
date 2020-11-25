@@ -28,6 +28,7 @@ export default function Chat({ navigation }) {
   const [name, setName] = useState("");
   const [messages, setMessages] = useState([]);
 
+  
   useEffect(() => {
     readUser();
     const unsubscribe = chatsRef.onSnapshot((querySnapshot) => {

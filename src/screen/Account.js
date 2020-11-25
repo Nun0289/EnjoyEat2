@@ -34,7 +34,7 @@ const Account = () => {
     const fetchDate = async () => {
       const pro = await axios.get("user/profile");
       setData(pro.data);
-      setImage(data.file);
+      setImage(pro.data.file);
       return pro;
 
       console.log({data});
