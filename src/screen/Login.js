@@ -38,7 +38,7 @@ const LoginScreen = ({ navigation }) => {
       .then(async (user) => {
         axios.defaults.headers.common["Authorization"] =
           (await "Bearer ") + user.data.token;
-        await AsyncStorage.setItem("user", JSON.stringify(user.data));
+        await AsyncStorage.setItem("token", JSON.stringify(user.data));
         navigation.dispatch(
           CommonActions.reset({
             routes: [{ name: "Root" }],
@@ -330,11 +330,11 @@ const LoginScreen = ({ navigation }) => {
 
             <TouchableOpacity
               // onPress={() =>
-              //   navigation.dispatch(
-              //     CommonActions.reset({
-              //       routes: [{ name: "Root" }],
-              //     })
-              //   )
+              // navigation.dispatch(
+              //   CommonActions.reset({
+              //     routes: [{ name: "Root" }],
+              //   })
+              // )
               // }
               style={{
                 backgroundColor: "blue",

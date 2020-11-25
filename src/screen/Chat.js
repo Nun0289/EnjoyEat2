@@ -23,7 +23,8 @@ if (firebase.apps.length === 0) {
 const db = firebase.firestore();
 const chatsRef = db.collection("chats");
 
-export default function Chat({ navigation }) {
+export default function Chat({ navigation, route }) {
+  const { id } = route.params;
   const [user, setUser] = useState(null);
   const [name, setName] = useState("");
   const [messages, setMessages] = useState([]);

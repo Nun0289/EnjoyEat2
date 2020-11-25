@@ -16,7 +16,9 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import StarRating from "react-native-star-rating";
 import { TextInput } from "react-native-gesture-handler";
 import { CommonActions } from "@react-navigation/native";
-const Rate = ({ navigation }) => {
+const Rate = ({ navigation, route }) => {
+  const { id } = route.params;
+  console.log(id);
   const [starCount, onStarRatingPress] = useState(0);
   return (
     <View style={styles.container}>
@@ -143,6 +145,15 @@ const Rate = ({ navigation }) => {
                     borderRadius: 10,
                     justifyContent: "center",
                     alignItems: "center",
+                    shadowColor: "#000",
+                    shadowOffset: {
+                      width: 0,
+                      height: 5,
+                    },
+                    shadowOpacity: 0.34,
+                    shadowRadius: 6.27,
+
+                    elevation: 10,
                   }}
                 >
                   <Text style={{ fontSize: 18, color: "#FFF" }}>Cancel</Text>
@@ -156,6 +167,15 @@ const Rate = ({ navigation }) => {
                     borderRadius: 10,
                     justifyContent: "center",
                     alignItems: "center",
+                    shadowColor: "#000",
+                    shadowOffset: {
+                      width: 0,
+                      height: 5,
+                    },
+                    shadowOpacity: 0.34,
+                    shadowRadius: 6.27,
+
+                    elevation: 10,
                   }}
                 >
                   <Text style={{ fontSize: 18, color: "#FFF" }}>Submit</Text>

@@ -16,7 +16,7 @@ import Detail from "../screen/Detail";
 import Rateuser from "../screen/Rateuser";
 import { useFonts, Prompt_300Light } from "@expo-google-fonts/prompt";
 import { AppLoading } from "expo";
-
+import { CommonActions } from "@react-navigation/native";
 const HomeStack = createStackNavigator();
 const FavoriteStack = createStackNavigator();
 const FriendsStack = createStackNavigator();
@@ -25,17 +25,17 @@ const NearStack = createStackNavigator();
 const DetailStack = createStackNavigator();
 const RateuserStack = createStackNavigator();
 
-const SearchIcon = ({ navigate, from }) => {
+const SearchIcon = ({ navigate, from, id }) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigate(from, { from: from });
+        navigate(from, { from: from, id: id });
       }}
     >
       <FontAwesome5
-        name="search"
-        size={30}
-        style={{ marginRight: 20, color: "#FFF" }}
+        name="bomb"
+        size={26}
+        style={{ marginRight: 20, color: "gray" }}
       />
     </TouchableOpacity>
   );
@@ -64,7 +64,7 @@ const BackIcon = ({ goBack, from }) => {
   );
 };
 
-const HomeStackScreen = ({ navigation }) => {
+const HomeStackScreen = ({ navigation, route }) => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
@@ -113,6 +113,12 @@ const HomeStackScreen = ({ navigation }) => {
         name="Chat"
         component={Chat}
         options={{
+          headerRight: () => (
+            <SearchIcon navigate={navigation.navigate} from={"Rate"} id={id} />
+          ),
+          headerTitleStyle: { fontFamily: "Prompt_300Light" },
+          headerBackTitleVisible: false,
+          title: "",
           animationEnabled: false,
           headerBackTitleVisible: false,
           animationEnabled: false,
