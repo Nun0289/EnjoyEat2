@@ -12,6 +12,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
+import axios from "axios";
 const Account = () => {
   const [image, setImage] = useState(null);
 
@@ -28,6 +29,23 @@ const Account = () => {
     })();
   }, []);
 
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchDate = async () => {
+      const pro = await axios.get("user/profile");
+      setData(pro.data);
+      setImage(data.file);
+      return pro;
+
+      console.log({data});
+      console.log({image});
+    };
+    fetchDate();
+  }, []);
+
+
+
+
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -43,7 +61,7 @@ const Account = () => {
     }
   };
   return (
-    <ScrollView>
+    // <ScrollView>
       <View style={styles.container}>
         <View
           style={{
@@ -119,7 +137,7 @@ const Account = () => {
                   paddingLeft: 10,
                   borderRadius: 5,
                 }}
-              ></TextInput>
+              >{data.firstName}</TextInput>
             </View>
           </View>
           <View
@@ -153,7 +171,7 @@ const Account = () => {
                   paddingLeft: 10,
                   borderRadius: 5,
                 }}
-              ></TextInput>
+              >{data.lastName}</TextInput>
             </View>
           </View>
           <View
@@ -187,7 +205,7 @@ const Account = () => {
                   paddingLeft: 10,
                   borderRadius: 5,
                 }}
-              ></TextInput>
+              >{data.nickname} </TextInput>
             </View>
           </View>
           <View
@@ -204,7 +222,7 @@ const Account = () => {
                 paddingLeft: 20,
               }}
             >
-              <Text style={{ fontSize: 15 }}>ที่อยู่</Text>
+              <Text style={{ fontSize: 15 }}>รายละเอียด</Text>
             </View>
             <View
               style={{
@@ -215,7 +233,7 @@ const Account = () => {
               <TextInput
                 multiline
                 numberOfLines={10}
-                placeholder="ที่อยู่"
+                placeholder="รายละเอียด"
                 style={{
                   paddingTop: 10,
                   textAlignVertical: "top",
@@ -225,7 +243,7 @@ const Account = () => {
                   paddingLeft: 10,
                   borderRadius: 5,
                 }}
-              ></TextInput>
+              >{data.description}</TextInput>
             </View>
           </View>
           <View
@@ -293,7 +311,7 @@ const Account = () => {
                   paddingLeft: 10,
                   borderRadius: 5,
                 }}
-              ></TextInput>
+              >{data.email}</TextInput>
             </View>
           </View>
           <View style={{ marginTop: 20 }}>
@@ -321,7 +339,7 @@ const Account = () => {
           </View>
         </View>
       </View>
-    </ScrollView>
+    // </ScrollView>
   );
 };
 
