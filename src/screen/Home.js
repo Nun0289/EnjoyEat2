@@ -87,7 +87,7 @@ const Home = ({ navigation }) => {
             <View style={homeStyle.menubar}>
               <View style={homeStyle.centermenubar}>
                 <View style={homeStyle.centerbutton}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => navigation.push("NearMe")}>
                     <View style={homeStyle.button}>
                       <View
                         style={{
@@ -223,19 +223,7 @@ const Home = ({ navigation }) => {
                       borderTopRightRadius: 10,
                       resizeMode: "cover",
                     }}
-                  >
-                    {/* <FontAwesome
-                      name={`heart${item.favorite ? "" : "-o"}`}
-                      size={30}
-                      style={{
-                        marginTop: 10,
-                        marginRight: 20,
-                        color: "red",
-                        position: "absolute",
-                        right: 0,
-                      }}
-                    /> */}
-                  </ImageBackground>
+                  ></ImageBackground>
                 </View>
                 <View
                   style={{
@@ -327,31 +315,6 @@ const Home = ({ navigation }) => {
                         </Text>
                       </View>
                     </View>
-                    {/* <View
-                      style={{
-                        flex: 1,
-
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <View
-                        style={{
-                          flexDirection: "row",
-                        }}
-                      >
-                        <View
-                          style={{
-                            flexDirection: "row",
-                          }}
-                        >
-                          <Text style={{ fontSize: 18, paddingRight: 5 }}>
-                            {item.people}
-                          </Text>
-                          <FontAwesome name="user" size={25} />
-                        </View>
-                      </View>
-                    </View> */}
                   </View>
                 </View>
               </View>

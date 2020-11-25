@@ -10,6 +10,7 @@ import Favorite from "../screen/Favorite";
 import Account from "../screen/Account";
 import Friends from "../screen/Friends";
 import Chat from "../screen/Chat";
+import NearMe from "../screen/nearRest";
 import Rate from "../screen/Rate";
 import Detail from "../screen/Detail";
 import Rateuser from "../screen/Rateuser";
@@ -20,8 +21,10 @@ const HomeStack = createStackNavigator();
 const FavoriteStack = createStackNavigator();
 const FriendsStack = createStackNavigator();
 const ChatStack = createStackNavigator();
+const NearStack = createStackNavigator();
 const DetailStack = createStackNavigator();
 const RateuserStack = createStackNavigator();
+
 const SearchIcon = ({ navigate, from }) => {
   return (
     <TouchableOpacity
@@ -107,8 +110,36 @@ const HomeStackScreen = ({ navigation }) => {
         }}
       />
       <HomeStack.Screen
+        name="Chat"
+        component={Chat}
+        options={{
+          animationEnabled: false,
+          headerBackTitleVisible: false,
+          animationEnabled: false,
+          headerTitleStyle: { fontFamily: "Prompt_300Light" },
+          title: "",
+          headerStyle: {
+            backgroundColor: "#FDD009",
+          },
+        }}
+      />
+      <HomeStack.Screen
         name="Rateuser"
         component={Rateuser}
+        options={{
+          animationEnabled: false,
+          headerBackTitleVisible: false,
+          animationEnabled: false,
+          headerTitleStyle: { fontFamily: "Prompt_300Light" },
+          title: "",
+          headerStyle: {
+            backgroundColor: "#FDD009",
+          },
+        }}
+      />
+      <HomeStack.Screen
+        name="NearMe"
+        component={NearMe}
         options={{
           animationEnabled: false,
           headerBackTitleVisible: false,
@@ -203,6 +234,27 @@ const ChatStackScreen = ({ navigation }) => {
     </ChatStack.Navigator>
   );
 };
+
+// const NearStackScreen = ({ navigation }) => {
+//   return (
+//     <NearStack.Navigator>
+//       <NearStack.Screen
+//         name="Near"
+//         component={NearMe}
+//         options={{
+//           animationEnabled: false,
+//           headerBackTitleVisible: false,
+//           animationEnabled: false,
+//           headerTitleStyle: { fontFamily: "Prompt_300Light" },
+//           title: "",
+//           headerStyle: {
+//             backgroundColor: "#FDD009",
+//           },
+//         }}
+//       />
+//     </NearStack.Navigator>
+//   );
+// };
 
 const Tab = createMaterialTopTabNavigator();
 

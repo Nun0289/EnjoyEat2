@@ -22,6 +22,7 @@ var modalBackgroundStyle = {
 };
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
+
 const Detail = ({ route, navigation }) => {
   // favol ต่อ API
   const [favol, showFavol] = useState(true);
@@ -388,7 +389,7 @@ const Detail = ({ route, navigation }) => {
         data={post}
         renderItem={({ item }) => (
           <View style={{ paddingTop: 20 }}>
-            <TouchableOpacity onPress={() => navigation.push("Rate")}>
+            <TouchableOpacity onPress={() => navigation.push("Chat")}>
               <View
                 style={{
                   width: windowWidth - 50,
